@@ -1,0 +1,30 @@
+version: "0.1"
+
+services:
+  uber-db:
+    image: postgres:latest
+    container_name: uber-db
+    environment:
+      POSTGRES_DB: uber-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dbjawed
+    volumes:
+      - uber-db-data:/var/lib/postgresql/data
+    networks:
+      - myNetwork
+
+  uber:
+    image: jawed/uber
+    container_name: uber
+    ports:
+      - "8080:8080"
+    networks:
+      - myNetwork
+    depends_on:
+      - uber-db
+
+volumes:
+  uber-db-data:
+
+networks:
+  myNetwork:
