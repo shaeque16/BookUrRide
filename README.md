@@ -35,3 +35,4 @@ POST /driver/ - Only driver role can check this endpoint
 Rider
 
 POST /rider/ - Only rider role can check this endpoint
+
